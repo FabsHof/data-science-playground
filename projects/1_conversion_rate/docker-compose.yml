@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:9.1
+    container_name: conversion_db_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password # TODO: Change this to a secure password
+      - MYSQL_DATABASE=db_course_conversions
+      - MYSQL_USER=conversion_user
+      - MYSQL_PASSWORD=conversion_password # TODO: Change this to a secure password
+    ports:
+      - "3306:3306" # MySQL standard port
+    volumes:
+      - './data/mysql:/var/lib/mysql'
+      - './data/db_course_conversions.sql:/docker-entrypoint-initdb.d/db_course_conversions.sql' # Initialize the database with the schema and data

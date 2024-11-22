@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:9.1
+    container_name: data_scientist_db_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password # TODO: Change this to a secure password
+      - MYSQL_DATABASE=data_scientist_project
+      - MYSQL_USER=data_science_user
+      - MYSQL_PASSWORD=data_science_password # TODO: Change this to a secure password
+    ports:
+      - "3306:3306" # MySQL standard port
+    volumes:
+      - './data/mysql:/var/lib/mysql'
+      - './data/data_scientist_project.sql:/docker-entrypoint-initdb.d/data_scientist_project.sql' # Initialize the database with the schema and data

@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:9.1
+    container_name: employees_db_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password # TODO: Change this to a secure password
+      - MYSQL_DATABASE=employees
+      - MYSQL_USER=employees_user
+      - MYSQL_PASSWORD=employees_password # TODO: Change this to a secure password
+    ports:
+      - "3306:3306" # MySQL standard port
+    volumes:
+      - './data/mysql:/var/lib/mysql'
+      - './data/employees.sql:/docker-entrypoint-initdb.d/employees.sql' # Initialize the database with the schema and data

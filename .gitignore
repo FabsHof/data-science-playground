@@ -1,0 +1,10 @@
+# General
+.history/
+.vscode/
+.idea/
+
+environment/
+
+# db and file folders
+**/data/mysql/
+**/data/csv/
